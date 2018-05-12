@@ -2,16 +2,29 @@ import java.util.ArrayList;
 
 public class IntContainer {
 
-    private int maxSize;
+    private int maxWeight;
 
     private ArrayList<Integer> integers = new ArrayList<>();
 
-    public IntContainer(int maxSize) {
-        this.maxSize = maxSize;
+    public IntContainer(int maxWeight) {
+        this.maxWeight = maxWeight;
+    }
+
+    public int getIntsWeight() {
+
+        int result = 0;
+
+        for (int i : integers) {
+            result = result + i;
+        }
+
+        return result;
     }
 
     public int getFreeSpace() {
-        return maxSize-integers.size();
+
+        return maxWeight-getIntsWeight();
+
     }
 
     public void printInts() {

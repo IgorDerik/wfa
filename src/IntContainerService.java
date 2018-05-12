@@ -10,15 +10,29 @@ public class IntContainerService {
 
     private IntContainer getRightContainer() {
 
-        int currentFreeSpace = 0;
-        IntContainer result = null;
+        int currentFreeSpace = containers.get(0).getFreeSpace();
+        IntContainer result = containers.get(0);
 
+
+        for (int i = 1; i < containers.size(); i++) {
+
+            if ( containers.get(i).getFreeSpace() > currentFreeSpace ) {
+
+                currentFreeSpace = containers.get(i).getFreeSpace();
+                result = containers.get(i);
+
+            }
+
+        }
+
+        /*
         for (IntContainer container : containers) {
             if(container.getFreeSpace() > currentFreeSpace) {
                 currentFreeSpace = container.getFreeSpace();
                 result = container;
             }
         }
+        */
 
         return result;
     }
